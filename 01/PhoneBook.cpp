@@ -6,7 +6,7 @@
 /*   By: iniska <iniska@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/09 20:45:09 by iniska            #+#    #+#             */
-/*   Updated: 2024/10/09 20:59:37 by iniska           ###   ########.fr       */
+/*   Updated: 2024/10/10 21:46:12 by iniska           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,15 +20,15 @@ void PhoneBook::addCon()
 {
 	std::string firstName, lastName, nickName, phoneNumber, darkestSecret;
 
-	str::cout << "Enter First Name: ";
+	std::cout << "Enter First Name: ";
 	std::getline(std::cin, firstName);
-	str::cout << "Enter Last Name: ";
+	std::cout << "Enter Last Name: ";
 	std::getline(std::cin, lastName);
-	str::cout << "Enter nickName: ";
+	std::cout << "Enter nickName: ";
 	std::getline(std::cin, nickName);
-	str::cout << "Enter Phone Number: ";
+	std::cout << "Enter Phone Number: ";
 	std::getline(std::cin, phoneNumber);
-	str::cout << "Enter Darkest Secret: ";
+	std::cout << "Enter Darkest Secret: ";
 	std::getline(std::cin, darkestSecret);
 
 	contacts[currentConIndex].setCon(firstName, lastName, nickName, phoneNumber, darkestSecret);
@@ -40,6 +40,9 @@ void PhoneBook::addCon()
 
 void PhoneBook::searchCon() const
 {
+	int	i;
+
+	i = 0;
 	if(totalCon == 0)
 	{
 		std::cout << "Nothing has been added to you phonebook" << std::endl;
@@ -49,4 +52,24 @@ void PhoneBook::searchCon() const
 			<< std::setw(10) << "First Name" << "|"
 			<< std::setw(10) << "Last Name" << "|"
 			<< std::setw(10) << "nickname" << std::endl;
+	while (i < totalCon)
+	{
+		std::cout << std::setw(10) << i << "|"
+				<< std::setw(10) << (contacts[i].getFirstName().length() > 10 ? contacts[i].getFirstName().substr(0, 9) + "." : contacts[i].getFirstName()) << "|"
+				<< std::setw(10) << (contacts[i].getLastName().length() > 10 ? contacts[i].getLastName().substr(0, 9) + "." : contacts[i].getLastName()) << "|"
+				<< std::setw(10) << (contacts[i].getNickName().length() > 10 ? contacts[i].getNickName().substr(0, 9) + "." : contacts[i].getNickName()) << std::endl;
+		i++;
+	}
+
+	int	index;
+	std::cout << "Enter index nbr to display: ";
+	std::cin >> index;
+	std::cin.ignore(); // ignores newline from buffer
+
+	if ( index >= 0 && index < totalCon)
+		contacts[index].displayCon();
+	else
+		std::cout << "Invalid nbr!" << std::endl;
 }
+
+

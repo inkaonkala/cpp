@@ -6,7 +6,7 @@
 /*   By: iniska <iniska@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/09 19:44:20 by iniska            #+#    #+#             */
-/*   Updated: 2024/10/09 20:32:18 by iniska           ###   ########.fr       */
+/*   Updated: 2024/10/10 21:40:23 by iniska           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,6 @@ class PhoneBook
 
 		void addCon();
 		void searchCon() const;
-}
+};
 
 #endif

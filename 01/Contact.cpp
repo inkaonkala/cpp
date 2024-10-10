@@ -6,20 +6,20 @@
 /*   By: iniska <iniska@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/09 20:33:27 by iniska            #+#    #+#             */
-/*   Updated: 2024/10/09 20:44:50 by iniska           ###   ########.fr       */
+/*   Updated: 2024/10/10 21:48:58 by iniska           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Contact.hpp"
 #include <iostream>
 
-void Contact::setCon(str::string firstName, std::str lastName, std::str nickName, std::str phoneNumber, std::str darkestSecret)
+void Contact::setCon(std::string firstName, std::string lastName, std::string nickName, std::string phoneNumber, std::string darkestSecret)
 {
 	this->firstName = firstName;
 	this->lastName = lastName;
-	this->nickname = nickName;
-	this->phonenumber = phoneNumber;
-	this->darkestSecret = darkestSecret
+	this->nickName = nickName;
+	this->phoneNumber = phoneNumber;
+	this->darkestSecret = darkestSecret;
 }
 
 std::string Contact::getFirstName() const
@@ -27,12 +27,12 @@ std::string Contact::getFirstName() const
 	return firstName;
 }
 
-std::string Contact::getLastNAme() const
+std::string Contact::getLastName() const
 {
 	return lastName;
 }
 
-std::string Contact::getNickname() const
+std::string Contact::getNickName() const
 {
 	return nickName;
 }
