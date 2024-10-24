@@ -6,7 +6,7 @@
 /*   By: iniska <iniska@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/09 20:45:09 by iniska            #+#    #+#             */
-/*   Updated: 2024/10/10 21:46:12 by iniska           ###   ########.fr       */
+/*   Updated: 2024/10/24 19:44:37 by iniska           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,16 +20,36 @@ void PhoneBook::addCon()
 {
 	std::string firstName, lastName, nickName, phoneNumber, darkestSecret;
 
-	std::cout << "Enter First Name: ";
-	std::getline(std::cin, firstName);
-	std::cout << "Enter Last Name: ";
-	std::getline(std::cin, lastName);
-	std::cout << "Enter nickName: ";
-	std::getline(std::cin, nickName);
-	std::cout << "Enter Phone Number: ";
-	std::getline(std::cin, phoneNumber);
-	std::cout << "Enter Darkest Secret: ";
-	std::getline(std::cin, darkestSecret);
+	do {
+		std::cout << "Enter First Name: ";
+		std::getline(std::cin, firstName);
+		if (firstName.empty())
+			std::cout << "You need to give me something!\n";
+	} while (firstName.empty());
+	do {
+		std::cout << "Enter Last Name: ";
+		std::getline(std::cin, lastName);
+		if (lastName.empty())
+			std::cout << "I need imput!\n";
+	} while (lastName.empty());
+	do {
+		std::cout << "Enter nickName: ";
+		std::getline(std::cin, nickName);
+		if (lastName.empty())
+			std::cout << "I need a Nick, or atleast a Name! Hah hah\n";
+	} while (nickName.empty());
+	do {
+		std::cout << "Enter Phone Number: ";
+		std::getline(std::cin, phoneNumber);
+		if (phoneNumber.empty())
+			std::cout << "Please insert some numbers\n";
+	} while (phoneNumber.empty());
+	do {
+		std::cout << "Enter Darkest Secret: ";
+		std::getline(std::cin, darkestSecret);
+		if (darkestSecret.empty())
+			std::cout << "Use your imagination!\n";
+	} while (darkestSecret.empty());
 
 	contacts[currentConIndex].setCon(firstName, lastName, nickName, phoneNumber, darkestSecret);
 

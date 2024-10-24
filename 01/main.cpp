@@ -6,7 +6,7 @@
 /*   By: iniska <iniska@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/10 21:31:08 by iniska            #+#    #+#             */
-/*   Updated: 2024/10/10 21:54:14 by iniska           ###   ########.fr       */
+/*   Updated: 2024/10/23 21:03:44 by iniska           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ int	main()
 		std::cout << "Enter command: ADD, SEARCH, EXIT : ";
 		if(!std::getline(std::cin, command))
 		{
-			std::cout << "\n End of input. You hit the ctrl+D";
+			std::cout << "\n End of input.\n";
 			break ;
 		}
 		if (command == "ADD")
@@ -34,7 +34,7 @@ int	main()
 		else if (command == "EXIT")
 			break ;
 		else
-			std::cout << "Unknown command!" << std::endl;
+			std::cout << "Whatcha blabberin'!" << std::endl;
 	}
 	return (0);
 }
