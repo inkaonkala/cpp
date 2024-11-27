@@ -6,7 +6,7 @@
 /*   By: iniska <iniska@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/09 19:44:20 by iniska            #+#    #+#             */
-/*   Updated: 2024/10/10 21:40:23 by iniska           ###   ########.fr       */
+/*   Updated: 2024/11/27 11:50:32 by iniska           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,9 @@
 #define PHONEBOOK_HPP
 
 #include "Contact.hpp"
+#include <string>
+#include <iomanip>
+#include <cstdlib>
 
 
 class PhoneBook
@@ -25,7 +28,6 @@ class PhoneBook
 
 	public:
 		PhoneBook();
-
 		void addCon();
 		void searchCon() const;
 };

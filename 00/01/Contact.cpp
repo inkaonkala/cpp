@@ -6,12 +6,11 @@
 /*   By: iniska <iniska@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/09 20:33:27 by iniska            #+#    #+#             */
-/*   Updated: 2024/10/10 21:48:58 by iniska           ###   ########.fr       */
+/*   Updated: 2024/11/26 13:33:43 by iniska           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Contact.hpp"
-#include <iostream>
 
 void Contact::setCon(std::string firstName, std::string lastName, std::string nickName, std::string phoneNumber, std::string darkestSecret)
 {
