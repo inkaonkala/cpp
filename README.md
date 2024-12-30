@@ -14,3 +14,8 @@ Learning the basics of c++ with bunch of little assignments in 42 manner.
 03
   "Inheritance"
 
+04
+  "Virtual functions"
+
+
+
