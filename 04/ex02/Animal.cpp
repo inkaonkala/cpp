@@ -6,7 +6,7 @@
 /*   By: iniska <iniska@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/27 20:55:02 by iniska            #+#    #+#             */
-/*   Updated: 2025/01/02 12:09:58 by iniska           ###   ########.fr       */
+/*   Updated: 2025/01/02 11:25:14 by iniska           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,9 +41,4 @@ Animal::~Animal()
 void Animal::makeSound() const 
 {
 	std::cout << "There's a sound you did not thought it would make" << std::endl;
-}
-
-std::string Animal::getType() const 
-{
-	return type;
 }

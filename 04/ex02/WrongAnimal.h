@@ -1,34 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Animal.h                                           :+:      :+:    :+:   */
+/*   WrongAnimal.h                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: iniska <iniska@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/12/27 20:23:52 by iniska            #+#    #+#             */
-/*   Updated: 2025/01/02 11:25:46 by iniska           ###   ########.fr       */
+/*   Created: 2025/01/02 11:39:47 by iniska            #+#    #+#             */
+/*   Updated: 2025/01/02 12:16:25 by iniska           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef ANIMAL_H
-#define ANIMAL_H
+#ifndef WRONGANIMAL_H
+#define WRONGANIMAL_H
 
 #include <iostream>
 #include <string>
 
-class Animal 
+class WrongAnimal 
 {
 	protected:
 		std::string type;
 
 	public:
-		Animal();
-		Animal(const Animal& other);
-		Animal& operator=(const Animal& other);
-		virtual ~Animal();
-		virtual void makeSound() const;
+		WrongAnimal();
+		WrongAnimal(const WrongAnimal& other);
+		WrongAnimal& operator=(const WrongAnimal& other);
+		~WrongAnimal();
 
-	
+		virtual void makeSound() const;
+		std::string getType() const;
+
 };
 
 #endif

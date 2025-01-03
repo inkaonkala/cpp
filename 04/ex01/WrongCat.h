@@ -1,34 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Animal.h                                           :+:      :+:    :+:   */
+/*   WrongCat.h                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: iniska <iniska@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/12/27 20:23:52 by iniska            #+#    #+#             */
-/*   Updated: 2025/01/02 11:25:46 by iniska           ###   ########.fr       */
+/*   Created: 2025/01/02 11:40:12 by iniska            #+#    #+#             */
+/*   Updated: 2025/01/02 12:10:34 by iniska           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef ANIMAL_H
-#define ANIMAL_H
+#ifndef WRONGCAT_H
+#define WRONGCAT_H
 
-#include <iostream>
-#include <string>
+#include "WrongAnimal.h"
 
-class Animal 
+class WrongCat : public WrongAnimal
 {
-	protected:
-		std::string type;
-
 	public:
-		Animal();
-		Animal(const Animal& other);
-		Animal& operator=(const Animal& other);
-		virtual ~Animal();
-		virtual void makeSound() const;
+		WrongCat();
+		WrongCat(const WrongCat& other);
+		WrongCat& operator=(const WrongCat& other);
+		~WrongCat();
 
-	
+		void makeSound() const;
 };
+
 
 #endif

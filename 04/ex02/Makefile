@@ -1,7 +1,7 @@
 
 CXX = c++
 FLAGS = -Wall -Wextra -Werror -std=c++11
-NAME = Brainzz
+NAME = VirtualTest
 
 SRC = main.cpp Animal.cpp Cat.cpp Dog.cpp Brainz.cpp WrongAnimal.cpp WrongCat.cpp
 OBJ = $(SRC:.cpp=.o)

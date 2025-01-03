@@ -6,7 +6,7 @@
 /*   By: iniska <iniska@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/27 20:55:02 by iniska            #+#    #+#             */
-/*   Updated: 2024/12/28 19:50:17 by iniska           ###   ########.fr       */
+/*   Updated: 2025/01/02 11:25:56 by iniska           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,22 @@
 Animal::Animal() : type("Animal")
 {
 	std::cout << "There's an animal!" << std::endl;
+}
+
+Animal::Animal(const Animal& other)
+{
+//	std::cout << "Copy animal for safety reasons" << std::endl;
+	type = other.type;
+}
+
+Animal& Animal::operator=(const Animal& other)
+{
+//	std::cout << "Assigned animal" << std::endl;
+	if (this != &other)
+	{
+		type = other.type;
+	}
+	return *this;
 }
 
 Animal::~Animal()
