@@ -6,7 +6,7 @@
 /*   By: iniska <iniska@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/03 10:23:11 by iniska            #+#    #+#             */
-/*   Updated: 2025/01/03 12:46:07 by iniska           ###   ########.fr       */
+/*   Updated: 2025/01/03 12:53:07 by iniska           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,8 +36,13 @@ class Bureaucrat
 		void incramentGrade();
 		void decramentGrade();
 
-		//Then we need the exception classes
-
+		/* 
+			Then we need underclasses of std::exeption
+			they inherit from exeption class			
+			what() function is a virtual function from std::exception. It returns ana strinf of the error
+			The throw() in the function signature is a "no-throw guarantee,
+		
+		*/	
 		void GradeTooLowException();
 		void GradeTooHighException();
 
