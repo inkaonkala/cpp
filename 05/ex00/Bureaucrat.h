@@ -6,7 +6,7 @@
 /*   By: iniska <iniska@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/03 10:23:11 by iniska            #+#    #+#             */
-/*   Updated: 2025/01/03 11:06:12 by iniska           ###   ########.fr       */
+/*   Updated: 2025/01/03 12:46:07 by iniska           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,8 +25,9 @@ class Bureaucrat
 
 	public:
 
-		Bureaucrat();
+		Bureaucrat(const std::string& name, int grade);
 		Bureaucrat(const Bureaucrat& other);
+		Bureaucrat& operator=(const Bureaucrat& other);
 		~Bureaucrat();
 
 		const std::string& getName();
@@ -36,6 +37,9 @@ class Bureaucrat
 		void decramentGrade();
 
 		//Then we need the exception classes
+
+		void GradeTooLowException();
+		void GradeTooHighException();
 
 };
 

@@ -6,18 +6,37 @@
 /*   By: iniska <iniska@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/03 10:53:27 by iniska            #+#    #+#             */
-/*   Updated: 2025/01/03 11:05:16 by iniska           ###   ########.fr       */
+/*   Updated: 2025/01/03 12:46:49 by iniska           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Bureaucrat.h"
 
-Bureaucrat::Bureaucrat()
+Bureaucrat::Bureaucrat(const std::string& name, int grade) : name(name)
 {
-	std::cout << "\_O_/ Bureaucrat is here!" << std::endl;
+	if (grade < 1)
+	{
+		throw GradeTooLowException()
+	}
+	else if (grade > 150)
+	{
+		throw GradeTooHighException();
+	}
+	this->grade = grade;
+	std::cout << "\_O_/ " << name << std::endl;
+	std::cout << "Grade: " << grade << "\n" << std::endl;
 }
 
 Bureaucrat::Bureaucrat(const Bureaucrat& other){
+}
+
+Bureaucrat& Bureaucrat::operator=(const Bureaucrat& other)
+{
+	if (this != &other)
+	{
+		this->grade = other.grade;
+	}
+	return *this;
 }
 
 Bureaucrat::~Bureaucrat(){
