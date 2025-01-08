@@ -1,7 +1,7 @@
 
 CXX = c++
 FLAGS = -Wall -Wextra -Werror -std=c++11
-NAME = Animals
+NAME = Buroo
 
 SRC = main.cpp Bureaucrat.cpp
 OBJ = $(SRC:.cpp=.o)

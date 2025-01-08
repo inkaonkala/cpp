@@ -6,7 +6,7 @@
 /*   By: iniska <iniska@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/03 10:23:11 by iniska            #+#    #+#             */
-/*   Updated: 2025/01/03 12:53:07 by iniska           ###   ########.fr       */
+/*   Updated: 2025/01/08 18:24:10 by iniska           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,13 +15,13 @@
 
 #include <iostream>
 #include <string>
+#include <stdexcept>
 
 class Bureaucrat
 {
 	private:
 		const std::string name;
-		int grade;
-		
+		int grade;	
 
 	public:
 
@@ -30,8 +30,8 @@ class Bureaucrat
 		Bureaucrat& operator=(const Bureaucrat& other);
 		~Bureaucrat();
 
-		const std::string& getName();
-		int getGrade();
+		const std::string& getName() const;
+		int getGrade() const;
 		
 		void incramentGrade();
 		void decramentGrade();
@@ -43,10 +43,22 @@ class Bureaucrat
 			The throw() in the function signature is a "no-throw guarantee,
 		
 		*/	
-		void GradeTooLowException();
-		void GradeTooHighException();
+		class GradeTooLowException : public std::exception {
+			const char* what() const throw()
+			{
+				return "Grade is too high!";
+			}
+		};
 
+		class GradeTooHighException : public std::exception {
+			const char* what() const throw()
+			{
+				return "Grade too low!";
+			}
+		};
 };
 
+// overloader
+std::ostream& operator<<(std::ostream& output, const Bureaucrat& bureau);
 
 #endif
