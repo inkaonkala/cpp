@@ -1,0 +1,115 @@
+Casts in C++
+
+4 types
+
+1. Static 
+
+	Most used. For normal type. Converts numeric types (int to float, or double to int).  
+	Converting between class types (base to derived). Converting between void* to any.
+
+	int a = 10;
+	double b = static_cast<double>(a);
+
+
+2. Dynamic
+
+	Used for safe downcasting in class, particul with polymorphism (pointers to refrences)
+	+ convert * or & to derived class at runtime
+	If fails, will return NULL
+
+	class Base {
+	public:
+ 	   virtual void show() { cout << "Base class" << endl; }
+	};
+
+	class Derived : public Base {
+	public:
+ 	   void show() override { cout << "Derived class" << endl; }
+	};
+
+	int main() 
+	{
+ 		Base* basePtr = new Derived();
+  	  	Derived* derivedPtr = dynamic_cast<Derived*>(basePtr);  // Safe downcast
+
+	    if (derivedPtr) {
+ 	    	derivedPtr->show();  // Derived class
+	  	} else {
+   	    	cout << "Cast failed" << endl;
+    	}
+
+	    delete basePtr;
+		return 0;
+	}
+
+
+3. const
+
+	Can modify const or volatile. Add or removes them from *. 
+	->so, if const, use this!
+
+
+
+	void modifyValue(const int& x) {
+	   // Remove const qualifier to modify the value
+	    int& nonConstRef = const_cast<int&>(x);
+	    nonConstRef = 20;  // Modify the value
+	}
+
+	int main() {
+ 	   const int a = 10;
+	    modifyValue(a);  // This will modify 'a' using const_cast
+	    cout << "Modified a = " << a << endl;  // This is undefined behavior
+	    return 0;
+	}
+
+
+4.reinterpret
+
+	"The scary one". Convert type to another type, like int* to char*. If you need to manipulate
+	memory directly, use this. 
+	Does not check the functionality when MAKE, so might end in undefined behaviour! 
+	For low lever programming, raw memory situations.
+
+	int main() 
+	{
+	 	int a = 10;
+	    char* b = reinterpret_cast<char*>(&a);  // Reinterpret int pointer as a char pointer
+
+	    cout << "Address of a: " << &a << endl;
+	    cout << "Value at the reinterpret cast pointer: " << static_cast<int>(*b) << endl;
+
+	    return 0;
+	}
+
+What are -inff, +inff and nanf
+
+These are the representation of numbers for floats and doubles.
+
+example:
+
+#include <iostream>
+#include <cmath>  // For mathematical operations
+
+int main() {
+    float posInf = +inff;  // Positive infinity
+    float negInf = -inff;  // Negative infinity
+
+    std::cout << "Positive Infinity: " << posInf << std::endl;  // Output: inf
+    std::cout << "Negative Infinity: " << negInf << std::endl;  // Output: -inf
+
+    return 0;
+}
+
++inff + any number = +inff
+-inff - any number = -inff
+1.0 / 0.0 = +inff
+-1.0 / 0.0 = -inff
+
+nanf = not-a-number value of float.
+for examlpe 0 / 0 or square -4
+
+Any operation involving NaN will result in NaN. For example:
+nanf("") + 1.0 = nanf("")
+nanf("") * 2.0 = nanf("")
+You can check for NaN using std::isnan().
