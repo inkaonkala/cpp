@@ -30,5 +30,13 @@ void iter(T* array, size_t lenght, void (*function)(T&))
 	}
 }
 
+template <typename T>
+void iter(T* array, size_t lenght, void (*function)(const T&))
+{
+	for (size_t i = 0; i < lenght; i++)
+	{
+		function(array[i]);
+	}
+}
 
 #endif
