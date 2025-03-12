@@ -17,5 +17,14 @@ Learning the basics of c++ with bunch of little assignments in 42 manner.
 04
   "Virtual functions"
 
+05
+  "Repetition and Exceptions"
+
+06
+  "C++ casts"
+
+07
+  "Templates"
+
 
 
