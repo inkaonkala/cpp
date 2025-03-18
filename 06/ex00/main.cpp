@@ -12,6 +12,21 @@
 
 #include "ScalarConverter.h"
 
+
+int main(int arv, char **arc)
+{
+    if (arv != 2)
+    {
+        std::cout << "Give me input!" << std::endl;
+        return (1);
+    }
+    ScalarConverter::convert(arc[1]);
+    return (0);
+}
+
+
+// https://www.geeksforgeeks.org/static_cast-in-cpp/ !!!!!!
+/*
 int main()
 {
 	std::cout << "\n" << std::endl;	
@@ -49,7 +64,7 @@ int main()
 	return (0);
 }
 
-/*
+
 int main()
 {
     // Test cases for float and double values
