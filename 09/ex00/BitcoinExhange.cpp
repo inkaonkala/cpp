@@ -31,7 +31,11 @@ DateAndPrices::DateAndPrices(const std::string data)
 		{
 			theData[date] = price;
 		}
-		file.close();
+	}
+	file.close();
+	if (theData.empty())
+	{
+		throw std::runtime_error("🙁 Something went wrong: Database is empty ");
 	}
 }
 
@@ -47,6 +51,10 @@ void DateAndPrices::prossInput(const std::string& inputFile) const
 	}
 
 	std::string line;
+	if (std::getline(file, line))
+	{
+		std::cout << "\nHello, welcome to the Bitcoin Machine! \n Input is: " <<  line << "\n" <<std::endl;
+	}
 	while (std::getline(file, line))
 	{
 		std::stringstream ss(line);
@@ -58,8 +66,6 @@ void DateAndPrices::prossInput(const std::string& inputFile) const
 			parse the file:
 				date | value
 				2011-01-03 | 3
-				2011-01-03 | 2
-				2011-01-03 | 1
 		*/
 		if (!(std::getline(ss, date, '|') && std::getline(ss, valueStr)))
 		{
@@ -68,11 +74,12 @@ void DateAndPrices::prossInput(const std::string& inputFile) const
 		}
 		
 		//trim
-		date.erase(date.find_last_not_of("\t") + 1);
-		valueStr.erase(0, valueStr.find_first_not_of("\t"));
+		date.erase(0, date.find_first_not_of(" \t"));
+		date.erase(date.find_last_not_of(" \t") + 1);
+		valueStr.erase(0, valueStr.find_first_not_of(" \t"));
+		valueStr.erase(valueStr.find_last_not_of(" \t") + 1);
 
 		//check date valid
-		
 		if (!dateValid(date))
 		{
 			std::cout << "Error: Bad date: " << date << std::endl;
@@ -97,15 +104,15 @@ void DateAndPrices::prossInput(const std::string& inputFile) const
 		
 		
 		//count the price
-		//try
-		//{
+		try
+		{
 			double price = getPrice(date);
 			std::cout << date << " => " << value << " = " << value * price << std::endl; 
-		//}
-		//catch (const std::exception& e)
-		//{
-		//	std::cout << "❌Error: Bad input: " << line << std::endl;
-		//}
+		}
+		catch (const std::exception& e)
+		{
+			std::cerr << e.what() << std::endl;
+		}
 	}
 	file.close();
 
@@ -114,9 +121,6 @@ void DateAndPrices::prossInput(const std::string& inputFile) const
 std::string DateAndPrices::findClosestDay(const std::string& date) const
 {
 	std::map<std::string, double>::const_iterator it = theData.lower_bound(date);
-
-
-    std::cout << "DEBUG: Searching closest day for " << date << std::endl;
 
 	if (theData.empty())
 	{
@@ -132,7 +136,6 @@ std::string DateAndPrices::findClosestDay(const std::string& date) const
 			throw std::runtime_error("❌Error: no valid prev date");
 		--it;
 	}
-
 	return (it->first);
 }
 
@@ -146,11 +149,10 @@ double DateAndPrices::getPrice(const std::string& date) const
 
 bool DateAndPrices::dateValid(const std::string& date) const
 {
-//	if (date.length() != 10)
-//	{
-//		std::cout << "KAKAKAKAKAKAKAKAKAKAKAKKA" << std::endl;
-//		return (false);
-//	}
+	if (date.length() != 10)
+	{
+		return (false);
+	}
 	if (date[4] != '-' || date[7] != '-')
 		return (false);
 	return (true);
