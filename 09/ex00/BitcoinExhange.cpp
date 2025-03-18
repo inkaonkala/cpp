@@ -72,6 +72,7 @@ void DateAndPrices::prossInput(const std::string& inputFile) const
 		valueStr.erase(0, valueStr.find_first_not_of("\t"));
 
 		//check date valid
+		
 		if (!dateValid(date))
 		{
 			std::cout << "Error: Bad date: " << date << std::endl;
@@ -82,21 +83,29 @@ void DateAndPrices::prossInput(const std::string& inputFile) const
 		{
 			// change to float
 			value = std::stof(valueStr);
-			if (value < 0 || value > 1000)
-			{
-				std::cout << "Bad value: " << value << std::endl;
-			}
-			//count the price
-			else
-			{
-				double price = getPrice(date);
-				std::cout << date << " => " << value << " = " << value * price << std::endl; 
-			}
 		}
 		catch (const std::exception& e)
 		{
-			std::cout << "❌Error: Bad input: " << line << std::endl;
+			std::cout << "❌ Error: Invalid value: " << valueStr << std::endl;
+			continue ;
 		}
+		if (value < 0 || value > 1000)
+		{
+			std::cout << "Bad value: " << value << std::endl;
+			continue ;
+		}
+		
+		
+		//count the price
+		//try
+		//{
+			double price = getPrice(date);
+			std::cout << date << " => " << value << " = " << value * price << std::endl; 
+		//}
+		//catch (const std::exception& e)
+		//{
+		//	std::cout << "❌Error: Bad input: " << line << std::endl;
+		//}
 	}
 	file.close();
 
@@ -105,28 +114,43 @@ void DateAndPrices::prossInput(const std::string& inputFile) const
 std::string DateAndPrices::findClosestDay(const std::string& date) const
 {
 	std::map<std::string, double>::const_iterator it = theData.lower_bound(date);
-	if (it == theData.begin() && it->first !=  date)
+
+
+    std::cout << "DEBUG: Searching closest day for " << date << std::endl;
+
+	if (theData.empty())
+	{
+		throw std::runtime_error("EMPTY DATA!");
+	}
+	if (it == theData.begin() && it->first != date)
 	{
 		throw std::runtime_error("❌Error: no earlier date in the database!");
 	}
 	if (it == theData.end() || it->first != date)
 	{
+		if (it == theData.begin())
+			throw std::runtime_error("❌Error: no valid prev date");
 		--it;
 	}
+
 	return (it->first);
 }
 
 double DateAndPrices::getPrice(const std::string& date) const
 {
-	std::string closestData = findClosestDay(date);
-	return theData.at(closestData);
-
+	std::string closestDate = findClosestDay(date);
+	if (theData.count(closestDate) == 0)
+		throw std::runtime_error("❌ Error: Date not found in database!");
+	return theData.at(closestDate);
 }
 
 bool DateAndPrices::dateValid(const std::string& date) const
 {
-	if (date.length() != 10)
-		return (false);
+//	if (date.length() != 10)
+//	{
+//		std::cout << "KAKAKAKAKAKAKAKAKAKAKAKKA" << std::endl;
+//		return (false);
+//	}
 	if (date[4] != '-' || date[7] != '-')
 		return (false);
 	return (true);

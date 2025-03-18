@@ -24,7 +24,7 @@ class ScalarConverter
 	private:
 		ScalarConverter();
 		// nee to add for the subject
-		ScalarConverter(const ScalarConverter& other) = delete;
+		ScalarConverter(const ScalarConverter& other) = delete; //are we allowe to do this?
 		ScalarConverter& operator=(const ScalarConverter& other) = delete;
 
 	public:

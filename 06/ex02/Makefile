@@ -2,10 +2,10 @@ CXX = c++
 FLAGS = -Wall -Wextra -Werror -std=c++11
 NAME = ABC
 
-SRC = main.cpp
+SRC = main.cpp data.cpp
 OBJ = $(SRC:.cpp=.o)
 
-all = $(NAME)
+all : $(NAME)
 
 $(NAME): $(OBJ)
 	$(CXX) $(FLAGS) -o $(NAME) $(OBJ)
