@@ -2,7 +2,7 @@ CXX = c++
 FLAGS = -Wall -Wextra -Werror -std=c++11
 NAME = btc
 
-SRC = main.cpp, BitcoinExhange.cpp
+SRC = main.cpp BitcoinExhange.cpp
 OBJ = $(SRC:.cpp=.o)
 
 all = $(NAME)

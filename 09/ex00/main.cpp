@@ -1,25 +1,37 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   main.cpp                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: iniska <iniska@student.hive.fi>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/03/18 10:01:16 by iniska            #+#    #+#             */
+/*   Updated: 2025/03/18 10:01:28 by iniska           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include <iostream>
 #include "BitcoinExhange.hpp"
 
 
-void parseFile(char *file)
-{
-	/*
-	Each line in this file must use the following format: "date | value".
-	• A valid date will always be in the following format: Year-Month-Day.
-	• A valid value must be either a float or a positive integer, between 0 and 1000.	
-	*/
-}
-
 int main(int arc, char **arv)
 {
-	if (arc == 2)
+	if (arc != 2)
 	{
-		parseFile(arv[1]);
+		std::cerr << "I need an input file, please!" << std::endl;
+		return (1);
 	}
-	else
+	try
 	{
-		std::cout << "Give me a file to work with!" << std::endl;
+		// save .scv to map<date, price>
+		DateAndPrices database("data.csv");
+		// go through the .txt to check the prices
+		database.prossInput(arv[1]);
+	}
+	catch (const std::exception& e)
+	{
+		std::cerr << e.what() << std::endl;
+		return (1);
 	}
 	return (0);
 }
