@@ -35,7 +35,8 @@ int main()
 	{
 		std::cout << "Serialization and deserialization complited!" << std::endl;
 	}
-	else {
+	else 
+	{
 		std::cout << "It has failed" << std::endl;
 	}
 	return (0);

@@ -23,10 +23,12 @@ class Serializer
 	private:
 		Serializer() {}
 		~Serializer() {}
+		// need to add for subj
+		Serializer(const Serializer& other) = delete;
+		Serializer& operator=(const Serializer& other) = delete;
 
 	public:
 		static uintptr_t serialize(Data* ptr);
-
 		static Data* deserializer(uintptr_t intData);
 };
 

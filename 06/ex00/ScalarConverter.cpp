@@ -14,11 +14,10 @@
 
 ScalarConverter::ScalarConverter() {};
 
-ScalarConverter::~ScalarConverter() {};
 
 bool isAChar(char c)
 {
-	return (c >=32 && c <= 126);
+	return (c >= 32 && c <= 126);
 }
 
 void ScalarConverter::convert(const std::string& input)
@@ -36,16 +35,21 @@ void ScalarConverter::convert(const std::string& input)
 			std::cout << "input is not displayable char" << std::endl;
 		}
 	}
-
-	//int
-	try
+	else if (input.length() > 1 &&  input.length() < 9 && std::isdigit(input[0]))
 	{
-		int i = std::stoi(input);
-		std::cout << "int is: " << i << std::endl;
+		char c = static_cast<char>(std::stoi(input));
+		if (isAChar(c))
+		{
+			std::cout << "char: '" << c << "'" << std::endl; 
+		}
+		else
+		{
+			std::cout << "input is not displayblablab" << std::endl;
+		}
 	}
-	catch (...) // this cathces everything, no need to specify!
+	else 
 	{
-		std::cout << "int is not happening" << std::endl;
+		std::cout << "char is not" << std::endl;
 	}
 	
 	//float
@@ -58,7 +62,7 @@ void ScalarConverter::convert(const std::string& input)
 		else 
 		{
 			float f = std::stof(input);
-			std::cout << "float is: " << std::fixed << std::setprecision(1);
+			std::cout << "float is: " << std::fixed << std::setprecision(1) << f << "f" << std::endl;
 		}
 	}
 	catch(...)
@@ -76,12 +80,25 @@ void ScalarConverter::convert(const std::string& input)
 		else
 		{
 			double d = std::stod(input);
-			std::cout << "double is: " << std::fixed << std::setprecision(1);
+			std::cout << "double is: " << std::fixed << std::setprecision(1) << d << std::endl;
 		}
 	}
 	catch(...)
 	{
 		std::cout << "no double to be done" << std::endl;
 	}
+
+	//int
+	try
+	{
+		int i = std::stoi(input);
+		std::cout << "int is: " << i << std::endl;
+	}
+	catch (...) // this cathces everything, no need to specify!
+	{
+		std::cout << "int is not happening" << std::endl;
+	}
 	
 }
+
+

@@ -23,11 +23,14 @@ class ScalarConverter
 {
 	private:
 		ScalarConverter();
-		~ScalarConverter();
+		// nee to add for the subject
+		ScalarConverter(const ScalarConverter& other) = delete;
+		ScalarConverter& operator=(const ScalarConverter& other) = delete;
 
 	public:
 
 		static void convert(const std::string& input);
+		~ScalarConverter() = default;
 
 };
 

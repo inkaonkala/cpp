@@ -67,21 +67,18 @@ void identify(Base& p)
 	try
 	{
 		A& a = dynamic_cast<A&>(p);
-	//	void(a); // for unused variable
 		std::cout << "A" << std::endl;
 	}
 	catch (std::bad_cast&) {}
 	try
 	{
 		B& b = dynamic_cast<B&>(p);
-	//	void(b);
 		std::cout << "B" << std::endl;
 	}
 	catch (std::bad_cast&) {}
 	try
 	{
 		C& c = dynamic_cast<C&>(p);
-	//	void(c);
 		std::cout << "C" << std::endl;
 	}
 	catch (std::bad_cast&) {}
@@ -92,6 +89,7 @@ int main()
 {
 	srand(time(0)); //seed for random
 
+	std::cout << "I will crete an Base pointer and set it randomly as A, B or C" << std::endl; 
 	Base* basePtr = generate();
 
 	std::cout << "Pointer Based Indenty: " << std::endl;
