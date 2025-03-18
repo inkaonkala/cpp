@@ -13,92 +13,61 @@
 #include "ScalarConverter.h"
 
 ScalarConverter::ScalarConverter() {};
+ScalarConverter::ScalarConverter(const ScalarConverter& other) { (void)other };
+ScalarConverter& ScalarConverter::operator=(const ScalarConverter& other) { (void)other; return *this };
+ScalarConverter::~ScalarConverter() {};
 
 
-bool isAChar(char c)
+bool isAChar(const std::string& input)
 {
-	return (c >= 32 && c <= 126);
+	return (input.lenght() == 1 && !std::isdigit(input[0]));
+}
+
+bool isInt(const std::string& input)
+{
+	try 
+	{
+		std::stoi(input);
+		return true;
+	}
+	catch (...)
+	{
+		return (false)
+	}
+}
+
+bool isDouble(const std::string& input)
+{
+	try 
+	{
+		std::stod(input);
+		return true;
+	}
+	catch (...)
+	{
+		return (false)
+	}
+}
+
+bool isFloat(const std::string& input)
+{
+	try 
+	{
+		std::stof(input);
+		return true;
+	}
+	catch (...)
+	{
+		return (false)
+	}
 }
 
 void ScalarConverter::convert(const std::string& input)
 {
-	// char
-	if (input.length() == 1 && !std::isdigit(input[0]))
+	if (isAChar(input))
 	{
-		char c = input[0];
-		if (isAChar(c))
-		{
-			std::cout << "char: '" << c << "'" << std::endl;
-		}
-		else
-		{
-			std::cout << "input is not displayable char" << std::endl;
-		}
+		
 	}
-	else if (input.length() > 1 &&  input.length() < 9 && std::isdigit(input[0]))
-	{
-		char c = static_cast<char>(std::stoi(input));
-		if (isAChar(c))
-		{
-			std::cout << "char: '" << c << "'" << std::endl; 
-		}
-		else
-		{
-			std::cout << "input is not displayblablab" << std::endl;
-		}
-	}
-	else 
-	{
-		std::cout << "char is not" << std::endl;
-	}
-	
-	//float
-	try
-	{
-		if (input == "-inff" || input == "+inff" || input == "nanf")
-		{
-			std::cout << "float is: " << input << std::endl; 
-		}
-		else 
-		{
-			float f = std::stof(input);
-			std::cout << "float is: " << std::fixed << std::setprecision(1) << f << "f" << std::endl;
-		}
-	}
-	catch(...)
-	{
-		std::cout << "no float in here" << std::endl;
-	}
-	
-	//double
-	try
-	{
-		if (input == "-inf" || input == "+inf" || input == "nan")
-		{
-			std::cout << "double is: " << input << std::endl;
-		}
-		else
-		{
-			double d = std::stod(input);
-			std::cout << "double is: " << std::fixed << std::setprecision(1) << d << std::endl;
-		}
-	}
-	catch(...)
-	{
-		std::cout << "no double to be done" << std::endl;
-	}
-
-	//int
-	try
-	{
-		int i = std::stoi(input);
-		std::cout << "int is: " << i << std::endl;
-	}
-	catch (...) // this cathces everything, no need to specify!
-	{
-		std::cout << "int is not happening" << std::endl;
-	}
-	
 }
 
 

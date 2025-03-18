@@ -16,6 +16,7 @@
 #include <string>
 #include <iostream>
 
+//THIS NEEDS TO BE A STRUCTS? 
 class Data 
 {
 	private:

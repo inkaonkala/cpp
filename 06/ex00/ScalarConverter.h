@@ -17,20 +17,21 @@
 #include <iostream>
 #include <sstream>
 #include <iomanip>
-#include <cmath> // nan, inf
+#include <cmath>
+#include <limits>
 
 class ScalarConverter
 {
 	private:
 		ScalarConverter();
-		// nee to add for the subject
-		ScalarConverter(const ScalarConverter& other) = delete; //are we allowe to do this?
-		ScalarConverter& operator=(const ScalarConverter& other) = delete;
+		// need to add for the subject
+		ScalarConverter(const ScalarConverter& other);
+		ScalarConverter& operator=(const ScalarConverter& other);
 
 	public:
 
 		static void convert(const std::string& input);
-		~ScalarConverter() = default;
+		~ScalarConverter();
 
 };
 
