@@ -1,29 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Data.h                                             :+:      :+:    :+:   */
+/*   Identify.hpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: iniska <iniska@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/01/26 06:41:02 by iniska            #+#    #+#             */
-/*   Updated: 2025/01/26 06:48:04 by iniska           ###   ########.fr       */
+/*   Created: 2025/03/19 10:03:04 by iniska            #+#    #+#             */
+/*   Updated: 2025/03/19 10:03:06 by iniska           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef DATA_H
-#define DATA_H
+#ifndef IDENTIFY_HPP
+#define IDENTIFY_HPP
 
-#include <string>
+#include "Base.hpp"
+#include "A.hpp"
+#include "B.hpp"
+#include "C.hpp"
+#include <cstdlib>
 #include <iostream>
 
-struct Data 
-{
-	std::string name;
-
-	Data(std::string str = "");
-	Data(const Data& other);
-	Data& operator=(const Data& other);
-	~Data();
-};
+Base* generate(void);
+void identify(Base* p);
+void identify(Base& p);
 
 #endif

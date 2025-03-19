@@ -2,7 +2,7 @@ CXX = c++
 FLAGS = -Wall -Wextra -Werror -std=c++11
 NAME = ABC
 
-SRC = main.cpp data.cpp
+SRC = main.cpp Identify.cpp
 OBJ = $(SRC:.cpp=.o)
 
 all : $(NAME)

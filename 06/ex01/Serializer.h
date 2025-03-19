@@ -16,7 +16,7 @@
 #include <iostream>
 #include <cstdint>
 
-class Data;
+struct Data;
 
 class Serializer
 {
@@ -29,7 +29,7 @@ class Serializer
 
 	public:
 		static uintptr_t serialize(Data* ptr);
-		static Data* deserializer(uintptr_t intData);
+		static Data* deserialize(uintptr_t intData);
 };
 
 #endif

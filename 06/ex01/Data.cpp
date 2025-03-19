@@ -1,28 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Base.h                                             :+:      :+:    :+:   */
+/*   Data.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: iniska <iniska@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/01/26 07:07:37 by iniska            #+#    #+#             */
-/*   Updated: 2025/01/26 07:21:19 by iniska           ###   ########.fr       */
+/*   Created: 2025/03/19 09:49:10 by iniska            #+#    #+#             */
+/*   Updated: 2025/03/19 09:49:11 by iniska           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-/*
-	make class virtual --> for the cleaning!
-*/
+#include "Data.h"
 
-#ifndef BASE_H
-#define BASE_H
 
-#include <iostream>
+Data::Data(std::string str) : name(str) {}
 
-class Base 
+Data::Data(const Data& other) : name(other.name) {}
+
+Data& Data::operator=(const Data& other)
 {
-	public:
-		virtual ~Base() {}
-};
+	if (this != &other)
+	{
+		name = other.name;
+	}
+	return *this;
+}
 
-#endif
+Data::~Data() {}

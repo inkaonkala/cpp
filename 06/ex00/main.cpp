@@ -17,7 +17,7 @@ int main(int arv, char **arc)
 {
     if (arv != 2)
     {
-        std::cout << "Give me input!" << std::endl;
+        std::cout << "Give me the correct input!" << std::endl;
         return (1);
     }
     ScalarConverter::convert(arc[1]);

@@ -29,15 +29,15 @@ int main()
 
 	uintptr_t serializedData = Serializer::serialize(&data);
 
-	Data* deserData = Serializer::deserializer(serializedData);
+	Data* deserData = Serializer::deserialize(serializedData);
 
 	if (&data == deserData)
 	{
-		std::cout << "Serialization and deserialization complited!" << std::endl;
+		std::cout << "✅ Serialization and deserialization complited!" << std::endl;
 	}
 	else 
 	{
-		std::cout << "It has failed" << std::endl;
+		std::cout << "❌ It has failed" << std::endl;
 	}
 	return (0);
 }
