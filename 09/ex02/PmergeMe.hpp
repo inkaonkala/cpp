@@ -1,39 +1,45 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ScalarConverter.h                                  :+:      :+:    :+:   */
+/*   PmergeMe.hpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: iniska <iniska@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/01/23 15:25:11 by iniska            #+#    #+#             */
-/*   Updated: 2025/01/23 20:06:52 by iniska           ###   ########.fr       */
+/*   Created: 2025/03/19 13:22:25 by iniska            #+#    #+#             */
+/*   Updated: 2025/03/19 13:22:27 by iniska           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef SCALARCONVERTER_H
-#define SCALARCONVERTER_H
 
-#include <string>
-#include <iostream>
-#include <sstream>
-#include <iomanip>
-#include <cmath>
-#include <limits>
+#ifndef PMERGEME_HPP
+#define PMERGEME_HPP
 
-class ScalarConverter
+class PmergeMe
 {
 	private:
+		/*
+			-split the numbers in smaller pairs 
+			-
+		*/
+		// Make each node a pair, swap the 
+		Merge();
+		
+			//pair the groups untill inly two are left
+			pairUp();
+
+
+		/*
+
+		*/
+		Insert();
 
 	public:
+		PmergeMe();
+		PmergeMe(const PmergeMe& other);
+		PmergeMe&operator=(const PmergeMe& other);
+		~PmergeMe();
 
-		ScalarConverter();
-		// need to add for the subject
-		ScalarConverter(const ScalarConverter& other);
-		ScalarConverter& operator=(const ScalarConverter& other);
-		~ScalarConverter();
-
-		static void convert(const std::string& input);
-
+		void compareAndMerge()
 };
 
 #endif
