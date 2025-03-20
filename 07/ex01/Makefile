@@ -5,7 +5,7 @@ NAME = Iteite
 SRC = main.cpp
 OBJ = $(SRC:.cpp=.o)
 
-all = $(NAME)
+all : $(NAME)
 
 $(NAME): $(OBJ)
 	$(CXX) $(FLAGS) -o $(NAME) $(OBJ)

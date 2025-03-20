@@ -56,13 +56,13 @@ int main()
 
 		//test out of bounds
 		try
-			{
-				std::cout << arr1[10] << std::endl;
-			}
-			catch (const std::out_of_range& e)
-			{
-				std::cout << "Exeption!! : " << e.what() << std::endl;
-			}
+		{
+			std::cout << arr1[10] << std::endl;
+		}
+		catch (const std::out_of_range& e)
+		{
+			std::cout << "Exeption!! : " << e.what() << std::endl;
+		}
 	}
 	catch(const std::exception& e)
 	{
