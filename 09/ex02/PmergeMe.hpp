@@ -14,32 +14,29 @@
 #ifndef PMERGEME_HPP
 #define PMERGEME_HPP
 
+#include <iostream>
+#include <sstream>
+#include <string>
+#include <vector>
+
+
 class PmergeMe
 {
 	private:
-		/*
-			-split the numbers in smaller pairs 
-			-
-		*/
-		// Make each node a pair, swap the 
-		Merge();
-		
-			//pair the groups untill inly two are left
-			pairUp();
+	
+		std::vector<int> numbers;
 
-
-		/*
-
-		*/
-		Insert();
+		void startHandler();
+		void sortMerge();
+		void sortAandB();
 
 	public:
-		PmergeMe();
+		PmergeMe(int arc, char **arv);
 		PmergeMe(const PmergeMe& other);
 		PmergeMe&operator=(const PmergeMe& other);
 		~PmergeMe();
 
-		void compareAndMerge()
+		void compareAndMerge();
 };
 
 #endif

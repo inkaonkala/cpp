@@ -19,6 +19,9 @@
 	https://dev.to/emuminov/human-explanation-and-step-by-step-visualisation-of-the-ford-johnson-algorithm-5g91
 
 */
+#include <iostream>
+#include <string>
+#include "PmergeMe.hpp"
 
 int main(int arc, char **arv)
 {
@@ -29,12 +32,13 @@ int main(int arc, char **arv)
 	}
 	try 
 	{
-		PmergeMe sorter;
+		std::cout << "Welcome to the number merge sorter 🧮" << std::endl;
+		PmergeMe sorter(arc, arv);
 		sorter.compareAndMerge();
 	}
 	catch (const std::exception &e)
 	{
-		std::cerr << e.what() << std::eddl;
+		std::cerr << e.what() << std::endl;
 		return (1);
 	}
 	return 0;
