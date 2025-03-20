@@ -26,44 +26,18 @@ class Array
 	public:
 
 		// emty array
-		Array() : array(nullptr), len(0) {}
+		Array();
 
 		//unsigned int as paramenter
-		Array(unsigned int n) : len(n)
-		{
-			array = new T[n]();
-		}
+		Array(unsigned int n);
 
 		//copy constructor
-		Array(const Array& other) : len(other.len)
-		{
-			array = new T(len);
-			for (unsigned int i = 0; i < len; ++i)
-			{
-				array[i] = other.array[i];
-			}
-		}
+		Array(const Array& other);
 
 		//assignment operator
-		Array& operator=(const Array& other)
-		{
-			if (this != &other)
-			{
-				delete[] array;
-				len = other.len;
-				array = new T[len];
-				for (unsigned int i = 0; i < len; ++i)
-				{
-					array[i] = other.array[i];
-				}
-			}
-			return *this;
-		}
+		Array& operator=(const Array& other);
 
-		~Array()
-		{
-				delete[] array;
-		}
+		~Array();
 
 		// operator with bound check
 		T& operator[](unsigned int index)
