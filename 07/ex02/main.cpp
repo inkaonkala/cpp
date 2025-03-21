@@ -14,14 +14,12 @@
 #include "Array.hpp"
 
 
-//// TEST WITH BIGGER NUMBERS!!!!!!!!!!!
-
 int main()
 {
 	try
 	{
 		// int test
-		Array<int> arr1(3);
+		Array<int> arr1(5);
 		for (unsigned int i = 0; i < arr1.size(); ++i)
 		{
 			arr1[i] = i + 2;
@@ -35,7 +33,7 @@ int main()
 
 	// copy const test
 		Array<int> arr2(arr1);
-		std::cout << "Arrey 2 (copy!): ";
+		std::cout << "Array 2 (copy!): ";
 		for (unsigned int i = 0; i < arr2.size(); ++i)
 		{
 			std::cout << arr2[i] << " ";

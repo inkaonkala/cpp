@@ -1,34 +1,27 @@
-# **************************************************************************** #
-#                                                                              #
-#                                                         :::      ::::::::    #
-#    Array.tpp                                          :+:      :+:    :+:    #
-#                                                     +:+ +:+         +:+      #
-#    By: iniska <iniska@student.hive.fi>            +#+  +:+       +#+         #
-#                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2025/03/20 13:21:53 by iniska            #+#    #+#              #
-#    Updated: 2025/03/20 13:21:56 by iniska           ###   ########.fr        #
-#                                                                              #
-# **************************************************************************** #
 
-#include "Array.hpp"
+#pragma once
 
-Array::Array() : array(nullptr), len(0) {}
+template <typename T>
+Array<T>::Array() : array(nullptr), len(0) {}
 
-Array::Array(unsigned int n) : len(n)
+template<typename T>
+Array<T>::Array(unsigned int n) : len(n)
 {
-	array = new T[n]();
+	array = new T[len]();
 }
 
-Array::Array(const Array& other) : len(other.len)
+template <typename T>
+Array<T>::Array(const Array<T>& other) : len(other.len)
 {
-	array = new T(len);
+	array = new T[len];
 	for (unsigned int i = 0; i < len; ++i)
 	{
 		array[i] = other.array[i];
 	}
 }
 
-Array& Array::operator=(const Array& other)
+template <typename T>
+Array<T>& Array<T>::operator=(const Array<T>& other)
 {
 	if (this != &other)
 	{
@@ -41,4 +34,36 @@ Array& Array::operator=(const Array& other)
 		}
 	}
 	return *this;
+}
+
+template <typename T>
+Array<T>::~Array()
+{
+		delete[] array;
+}
+
+template <typename T>
+T& Array<T>::operator[](unsigned int index)
+{
+	if (index >= len)
+	{
+		throw std::out_of_range("Out of bounds index"); // std::exeption
+	}
+	return array[index];
+}
+
+template <typename T>
+const T& Array<T>::operator[](unsigned int index) const
+{
+	if (index >= len)
+	{
+		throw std::out_of_range("Index is out of bounds");
+	}
+	return array[index];
+}
+
+template <typename T>
+unsigned int Array<T>::size() const
+{
+	return (len);
 }

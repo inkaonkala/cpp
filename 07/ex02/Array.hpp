@@ -25,44 +25,21 @@ class Array
 
 	public:
 
-		// emty array
 		Array();
-
-		//unsigned int as paramenter
 		Array(unsigned int n);
-
-		//copy constructor
 		Array(const Array& other);
-
-		//assignment operator
 		Array& operator=(const Array& other);
-
 		~Array();
 
 		// operator with bound check
-		T& operator[](unsigned int index)
-		{
-			if (index >= len)
-			{
-				throw std::out_of_range("Out of bounds index"); // std::exeption
-			}
-			return array[index];
-		}
+		T& operator[](unsigned int index);
 
 		// const operator check, read only access
-		const T& operator[](unsigned int index) const
-		{
-			if (index >= len)
-			{
-				throw std::out_of_range("Index is out of bounds");
-			}
-			return array[index];
-		}
+		const T& operator[](unsigned int index) const;
 
-		unsigned int size() const
-		{
-			return (len);
-		}	
+		unsigned int size() const;
 };
+
+#include "Array.tpp"
 
 #endif
