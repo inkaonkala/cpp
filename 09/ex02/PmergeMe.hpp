@@ -25,10 +25,10 @@ class PmergeMe
 	private:
 	
 		std::vector<int> numbers;
+		std::vector<std::pair<int, int>> pairs;
 
 		void startHandler();
-		void sortMerge();
-		void sortAandB();
+		void sortSandB();
 
 	public:
 		PmergeMe(int arc, char **arv);
