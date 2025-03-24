@@ -40,7 +40,7 @@ PmergeMe& PmergeMe::operator=(const PmergeMe& other)
 //this first function will take all the numbers, set them as pairs and sets the smallest num first
 void PmergeMe::startHandler()
 {
-	std::cout << "First, I will pair up your numbers (ෆ˙ᵕ˙ෆ) " << std::endl;
+	std::cout << "\n	First, I will pair up your numbers (ෆ˙ᵕ˙ෆ) " << std::endl;
 	
 	//std::vector<std::pair<int, int>> pairs;
 	for (size_t i = 0; i + 1 < numbers.size(); i += 2)
@@ -53,12 +53,12 @@ void PmergeMe::startHandler()
 	if (numbers.size() % 2 != 0)
 		pairs.push_back({numbers.back(), -1});
 
-	std::cout << " ♡ Pairing has been done! " << std::endl;
+	std::cout << "	♡ Pairing has been done! " << std::endl;
 }
 
 void PmergeMe::sortSandB()
 {
-	std::cout << "Now I will divide the numbers in two goups small:𐦂𖨆𐀪𖠋𐀪𐀪 and BIG:𐦂𖨆𐀪𖠋𐀪𐀪" << std::endl;
+	std::cout << "\n	Now I will divide the numbers in two goups small:𐦂𖨆𐀪𖠋𐀪𐀪 and BIG:𐦂𖨆𐀪𖠋𐀪𐀪" << std::endl;
 
 	std::vector<int> S;
 	std::vector<int> B;
@@ -70,23 +70,68 @@ void PmergeMe::sortSandB()
 			B.push_back(pairs[i].second);
 	}
 
-	/*
-	// Print the groups out
+	std::cout << " \n	Next it's time to sort the BIG group recurssively ꒰⑅ᵕ༚ᵕ꒱˖" << std::endl;
+	std::vector<int> sorted = FordJohnsonTime(B);
 
-	std::cout << "Group S (small values): ";
-	for (size_t i = 0; i < S.size(); ++i)
-		std::cout << S[i] << " ";
+	std::cout << "Sorted B group: ";
+	for (int num : sorted)
+		std::cout << num << " ";
 	std::cout << std::endl;
 
-	std::cout << "Group B (big values): ";
-	for (size_t i = 0; i < B.size(); ++i)
-		std::cout << B[i] << " ";
-	std::cout << std::endl;
-	*/
+}
 
-	// Now sort the numbers in B group
+std::vector<int> PmergeMe::FordJohnsonTime(const std::vector<int>& input)
+{	
+	if (input.size() <= 1)
+		return input;
 	
+	// send back and fort to pairing untill it's done
+	std::vector<std::pair<int, int>> newPairs;
 
+	//pair up again
+	for (size_t i = 0; i + 1 < input.size(); i += 2)
+	{
+		if (input[i] > input[i + 1])
+			newPairs.push_back({input[i + 1], input[i]});
+		else
+			newPairs.push_back({input[i], input[i + 1]});
+	}
+	if (input.size() % 2 != 0)
+		newPairs.push_back({input.back(), -1});
+
+	// divide SMALL AND BIG again
+
+	std::vector<int> S;
+	std::vector<int> B;
+
+	for (size_t i = 0; i < newPairs.size(); ++i)
+	{
+		S.push_back(newPairs[i].first);
+		if (newPairs[i].second != -1)
+			B.push_back(newPairs[i].second);
+	}
+
+	// loop back
+	std::vector<int> sorted = FordJohnsonTime(B);
+
+	// buid the Jacobstahl order to merge the groupss
+	std::vector<size_t> wholeGroup = INeedTheLaddersJacob(S.size());
+
+	// AMerge the S and B groups according to the Jacob
+	
+	// for (size_t i = 0; i < S.size(); ++i)
+	// {
+	// 	auto pos = std::lower_bound(sorted.begin(), sorted.end(), S[i]);
+	// 	sorted.insert(pos, S[i]);
+	// }
+	
+	return sorted;
+
+}
+
+std::vector<size_t> PmergeMe::INeedTheLaddersJacob(size_t size)
+{
+	std::cout << "HERE HERE" << std::endl;
 }
 
 

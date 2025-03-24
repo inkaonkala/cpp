@@ -29,6 +29,9 @@ class PmergeMe
 
 		void startHandler();
 		void sortSandB();
+		std::vector<int> FordJohnsonTime(const std::vector<int>& input);
+		std::vector<size_t> INeedTheLaddersJacob(size_t size);
+
 
 	public:
 		PmergeMe(int arc, char **arv);
