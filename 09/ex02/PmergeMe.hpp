@@ -31,6 +31,7 @@ class PmergeMe
 		void sortSandB();
 		std::vector<int> FordJohnsonTime(const std::vector<int>& input);
 		std::vector<size_t> INeedTheLaddersJacob(size_t size);
+		std::vector<int> mergeTheGroups(const std::vector<int>& S, std::vector<int>& B, const std::vector<size_t>& ladder);
 
 
 	public:
