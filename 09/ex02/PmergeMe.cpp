@@ -56,7 +56,7 @@ void PmergeMe::startHandler()
 }
 
 // 2. Divide the pairs in two groups, Small and Big. 
-void PmergeMe::sortSandB()
+std::vector<int> PmergeMe::sortSandB()
 {
 	std::cout << "\n	Now I will divide the numbers in two goups small:𐦂𖨆𐀪𖠋𐀪𐀪 and BIG:𐦂𖨆𐀪𖠋𐀪𐀪" << std::endl;
 
@@ -70,19 +70,17 @@ void PmergeMe::sortSandB()
 			B.push_back(pairs[i].second);
 	}
 
-	// 	//Print Small group
-	// for (int i = 0; i < S.size(); i++)
-	// {
-	// 	std::cout << S[i] << std::endl; 
-	// }
+	std::cout << " \n	Next it's time to sort the BIG group recurssively ꒰⑅ᵕ༚ᵕ꒱˖\n" << std::endl;
+	std::vector<int> sortedB = FordJohnsonTime(B);
 
-	std::cout << " \n	Next it's time to sort the BIG group recurssively ꒰⑅ᵕ༚ᵕ꒱˖" << std::endl;
-	std::vector<int> sorted = FordJohnsonTime(B);
+	std::cout << "\n	We need little help from Jacob now! 🪜 Let's borrow his ladders" << std::endl;
+	std::vector<size_t> ladderNums = INeedTheLaddersJacob(S.size());
 
-	std::cout << "Sorted!: ";
-	for (int num : sorted)
-		std::cout << num << " ";
-	std::cout << std::endl;
+	std::cout << "\n	Final step! We will merge the groups! ⛙ " << std::endl;
+	std::vector<int> result = mergeTheGroups(S, sortedB, ladderNums);
+
+	std::cout << "\n	꒰⑅ᵕ༚ᵕ꒱˖ Now it's done! " << std::endl;
+	return result;
 }
 
 // 3. By looping the pairs,  sort the B group
@@ -118,19 +116,12 @@ std::vector<int> PmergeMe::FordJohnsonTime(const std::vector<int>& input)
 	}
 
 	// loop back
-	std::vector<int> sorted = FordJohnsonTime(B);
-
-	// buid the Jacobstahl order to merge the groupss
-	std::vector<size_t> ladderNums = INeedTheLaddersJacob(S.size());
-
-	return mergeTheGroups(S, sorted, ladderNums);
-
+	return FordJohnsonTime(B);
 }
 
 // 4. Count the Jacobstahl numbers untill s.size() number has been hit
 std::vector<size_t> PmergeMe::INeedTheLaddersJacob(size_t size)
 {
-	std::cout << "	We need little help from Jacob now! 🪜 Let's borrow his ladders" << std::endl;
 	std::vector<size_t> Jacob = {0, 1};
 	while (Jacob.back() < size)
 	{
@@ -159,13 +150,13 @@ std::vector<size_t> PmergeMe::INeedTheLaddersJacob(size_t size)
 			}
 		}
 	}
-	return ladder;
-	
+	return ladder;	
 }
 
 // 5. Insert the S group numbers to the B group by sing the pairs and Jacob numbers
 std::vector<int> PmergeMe::mergeTheGroups(const std::vector<int>& S, std::vector<int>& B, const std::vector<size_t>& ladder)
 {
+	
 	for (size_t i = 0; i < ladder.size(); ++i)
 	{
 		size_t index = ladder[i];
@@ -180,6 +171,10 @@ std::vector<int> PmergeMe::mergeTheGroups(const std::vector<int>& S, std::vector
 void PmergeMe::compareAndMerge()
 {
 	startHandler();
-	//while (numbers.size() > 2)
-	sortSandB();
+
+	std::vector<int> theResult = sortSandB();
+	std::cout << " \n	✨ The result of the sorting ✨: ";
+	for (int num : theResult)
+		std::cout << num << " ";
+	std::cout << std::endl;
 }
