@@ -12,13 +12,28 @@
 
 #include "PmergeMe.hpp"
 
+
+/*
+#include <chrono>
+
+auto start = std::chrono::high_resolution_clock::now();
+// call your sorting logic
+auto end = std::chrono::high_resolution_clock::now();
+
+auto duration = std::chrono::duration_cast<std::chrono::microseconds>(end - start);
+std::cout << "Time to process a range of " << numbers.size()
+          << " elements with std::vector : " << duration.count() << " µs" << std::endl;
+
+*/
+
 PmergeMe::PmergeMe(int arc, char **arv)
 {
 	for (int i = 1; i < arc; ++i)
 	{
 		int num;
 		std::stringstream ss(arv[i]);
-		if (!(ss >> num))
+		// make it ivalid also for 2s
+		if (!(ss >> num) || !(ss.eof()))
 			throw std::invalid_argument("Invalid input!");
 		numbers.push_back(num);
 	}
