@@ -75,7 +75,7 @@ std::vector<int> PmergeMe::sortSandB()
 
 	std::cout << "\n	We need little help from Jacob now! 🪜 Let's borrow his ladders" << std::endl;
 	std::vector<size_t> ladderNums = INeedTheLaddersJacob(S.size());
-
+	
 	std::cout << "\n	Final step! We will merge the groups! ⛙ " << std::endl;
 	std::vector<int> result = mergeTheGroups(S, sortedB, ladderNums);
 
@@ -89,7 +89,6 @@ std::vector<int> PmergeMe::FordJohnsonTime(const std::vector<int>& input)
 	if (input.size() <= 1)
 		return input;
 	
-	// send back and fort to pairing untill it's done
 	std::vector<std::pair<int, int>> newPairs;
 
 	//pair up again
@@ -103,8 +102,6 @@ std::vector<int> PmergeMe::FordJohnsonTime(const std::vector<int>& input)
 	if (input.size() % 2 != 0)
 		newPairs.push_back({input.back(), -1});
 
-	// divide SMALL AND BIG again
-
 	std::vector<int> S;
 	std::vector<int> B;
 
@@ -114,9 +111,13 @@ std::vector<int> PmergeMe::FordJohnsonTime(const std::vector<int>& input)
 		if (newPairs[i].second != -1)
 			B.push_back(newPairs[i].second);
 	}
-
 	// loop back
-	return FordJohnsonTime(B);
+
+	std::vector<int> sortedB = FordJohnsonTime(B);
+	std::vector<size_t> ladder = INeedTheLaddersJacob(S.size());
+	std::vector<int> sortedBig = mergeTheGroups(S, sortedB, ladder);
+	
+	return sortedBig;
 }
 
 // 4. Count the Jacobstahl numbers untill s.size() number has been hit
@@ -155,17 +156,30 @@ std::vector<size_t> PmergeMe::INeedTheLaddersJacob(size_t size)
 
 // 5. Insert the S group numbers to the B group by sing the pairs and Jacob numbers
 std::vector<int> PmergeMe::mergeTheGroups(const std::vector<int>& S, std::vector<int>& B, const std::vector<size_t>& ladder)
-{
-	
+{	
+	std::vector<bool> alreadyIn(S.size(), false);
+	std::vector<int> sorted = B;
+
 	for (size_t i = 0; i < ladder.size(); ++i)
 	{
 		size_t index = ladder[i];
 		if (index >= S.size())
 			continue ;
-		auto pos = std::lower_bound(B.begin(), B.end(), S[index]);
-		B.insert(pos, S[index]); 
+
+		auto pos = std::lower_bound(sorted.begin(), sorted.end(), S[index]);
+		sorted.insert(pos, S[index]); 
+		alreadyIn[index] = true;
 	}
-	return B;
+
+	for (size_t i = 0; i < S.size(); ++i)
+	{
+		if (!alreadyIn[i])
+		{
+			auto pos = std::lower_bound(sorted.begin(), sorted.end(), S[i]);
+			sorted.insert(pos, S[i]);
+		}
+	}
+	return sorted;
 }
 
 void PmergeMe::compareAndMerge()
