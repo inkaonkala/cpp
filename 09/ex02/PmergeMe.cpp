@@ -51,10 +51,11 @@ PmergeMe& PmergeMe::operator=(const PmergeMe& other)
 	}
 	return *this;
 }
+
 // 1. Pair up all the numbers. Shift the smaller first. Like 1 5 8 3 5 9 2 -> {1 5} {3 8} {9 2} 
 void PmergeMe::startHandler()
 {
-	std::cout << "\n	First, I will pair up your numbers (ෆ˙ᵕ˙ෆ) " << std::endl;
+//	std::cout << "\n	First, I will pair up your numbers (ෆ˙ᵕ˙ෆ) " << std::endl;
 	
 	//std::vector<std::pair<int, int>> pairs;
 	for (size_t i = 0; i + 1 < numbers.size(); i += 2)
@@ -67,13 +68,13 @@ void PmergeMe::startHandler()
 	if (numbers.size() % 2 != 0)
 		pairs.push_back({numbers.back(), -1});
 
-	std::cout << "	♡ Pairing has been done! " << std::endl;
+//	std::cout << "	♡ Pairing has been done! " << std::endl;
 }
 
 // 2. Divide the pairs in two groups, Small and Big. 
 std::vector<int> PmergeMe::sortSandB()
 {
-	std::cout << "\n	Now I will divide the numbers in two goups small:𐦂𖨆𐀪𖠋𐀪𐀪 and BIG:𐦂𖨆𐀪𖠋𐀪𐀪" << std::endl;
+//	std::cout << "\n	Now I will divide the numbers in two goups small:𐦂𖨆𐀪𖠋𐀪𐀪 and BIG:𐦂𖨆𐀪𖠋𐀪𐀪" << std::endl;
 
 	std::vector<int> S;
 	std::vector<int> B;
@@ -85,16 +86,16 @@ std::vector<int> PmergeMe::sortSandB()
 			B.push_back(pairs[i].second);
 	}
 
-	std::cout << " \n	Next it's time to sort the BIG group recurssively ꒰⑅ᵕ༚ᵕ꒱˖\n" << std::endl;
+//	std::cout << " \n	Next it's time to sort the BIG group recurssively ꒰⑅ᵕ༚ᵕ꒱˖\n" << std::endl;
 	std::vector<int> sortedB = FordJohnsonTime(B);
 
-	std::cout << "\n	We need little help from Jacob now! 🪜 Let's borrow his ladders" << std::endl;
+//	std::cout << "\n	We need little help from Jacob now! 🪜 Let's borrow his ladders" << std::endl;
 	std::vector<size_t> ladderNums = INeedTheLaddersJacob(S.size());
 	
-	std::cout << "\n	Final step! We will merge the groups! ⛙ " << std::endl;
+//	std::cout << "\n	Final step! We will merge the groups! ⛙ " << std::endl;
 	std::vector<int> result = mergeTheGroups(S, sortedB, ladderNums);
 
-	std::cout << "\n	꒰⑅ᵕ༚ᵕ꒱˖ Now it's done! " << std::endl;
+//	std::cout << "\n	꒰⑅ᵕ༚ᵕ꒱˖ Now it's done! " << std::endl;
 	return result;
 }
 
@@ -199,11 +200,24 @@ std::vector<int> PmergeMe::mergeTheGroups(const std::vector<int>& S, std::vector
 
 void PmergeMe::compareAndMerge()
 {
+	std::cout << " \n	Numbers before the sort: ";
+	for (int n : numbers)
+		std::cout << n << " ";
+	std::cout << std::endl;
+
+	auto start = std::chrono::high_resolution_clock::now();
+
 	startHandler();
 
 	std::vector<int> theResult = sortSandB();
-	std::cout << " \n	✨ The result of the sorting ✨: ";
+
+	auto end = std::chrono::high_resolution_clock::now();
+	
+	std::cout << "	✨ The result of the sorting ✨: ";
 	for (int num : theResult)
 		std::cout << num << " ";
 	std::cout << std::endl;
+
+	auto duration = std::chrono::duration_cast<std::chrono::microseconds>(end - start);
+	std::cout << "	The range of numbers was " << numbers.size() << " numbers.\n	It took " << duration.count() << " microsec to sort it.\n" << std::endl;
 }
