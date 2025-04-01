@@ -28,25 +28,21 @@ class Span
 
 	public:
 
-		Span(unsigned int N); // : maxSize(N) {}
+		Span(unsigned int N);
 
-		Span(const Span& other); // : maxSize(other.maxSize), numbers(other.numbers) {}
+		Span(const Span& other);
 		
 		Span& operator=(const Span& other);
 		
-		~Span(); // {}
+		~Span();
 
 		//add number to span untill N is full
 		void addNumber(int number);
-		/* 
-			find out the shortest span or the longest span
-			If there are no numbers stored, or only one, no span can be found. 
-			Thus, throw an exception.
-		*/
+
+
 		int shortestSpan();
 		int longestSpan();
 
-		// getter!!
 		unsigned int size() const;
 
 		/*
