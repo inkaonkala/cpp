@@ -12,6 +12,8 @@
 
 
 #include <iostream>
+#include <cstdlib>
+#include <ctime>
 #include "Span.hpp"
 
 /*
@@ -20,51 +22,46 @@
 
 int main() 
 {
-  	Span sp = Span(5);
+	try
+	{
 
-	sp.addNumber(6);
-	sp.addNumber(3);
-	sp.addNumber(17);
-	sp.addNumber(9);
-	sp.addNumber(11);
-	std::cout << sp.shortestSpan() << std::endl;
-	std::cout << sp.longestSpan() << std::endl;
+  		Span sp = Span(5);
 
-	Span sbul = Span(15);
-	std::vector<int> numbers = {3, 12, 14, 531, 5421, 123, 41, 513, 765, 6, 324, 75};
+		sp.addNumber(6);
+		sp.addNumber(3);
+		sp.addNumber(17);
+		sp.addNumber(9);
+		sp.addNumber(11);
+		std::cout << sp.shortestSpan() << std::endl;
+		std::cout << sp.longestSpan() << std::endl;
 
-	sbul.addMultiple(numbers.begin(), numbers.end());
-	std::cout << sbul.shortestSpan() << std::endl;
-	std::cout << sbul.longestSpan() << std::endl;
+		Span sbul = Span(15);
+		std::vector<int> numbers = {3, 12, 14, 531, 5421, 123, 41, 513, 765, 6, 324, 75};
+
+		sbul.addMultiple(numbers.begin(), numbers.end());
+		std::cout << sbul.shortestSpan() << std::endl;
+		std::cout << sbul.longestSpan() << std::endl;
+
+		Span thisIsBig = Span(10001);
+		std::vector<int> numbersB(10001);
+
+		std::srand(std::time(nullptr));
+
+		for (int i = 0; i < 10000; ++i) 
+		{
+	   	 	numbersB[i] = std::rand();
+		}
+		thisIsBig.addMultiple(numbersB.begin(), numbersB.end());
+
+		std::cout << thisIsBig.shortestSpan() << std::endl;
+		std::cout << thisIsBig.longestSpan() << std::endl;
+	}
+	catch (const std::exception& e)
+	{
+		std::cerr << "Error: " << e.what() << std::endl;
+	}
 
 	return 0; 
 }
 
-/*
-	To test with A LOT of numbers we ant to use the forbidden library :O
-*/
 
-// #include <iostream>
-// #include <algorithm>
-// #include <cstdlib>
-// #include <ctime>
-
-// #include "Span.hpp"
-
-// int main()
-// {
-// 	Span thiIsBig = Span(10001);
-// 	std::vector<int> numbers(10001);
-
-// 	std::srand(std::time(nullptr));
-
-// 	std::generate(numbers.begin(), numbers.end(), []() {
-// 		return std::rand();
-// 	});
-
-// 	thiIsBig.addMultiple(numbers.begin(), numbers.end());
-// 	std::cout << thiIsBig.shortestSpan() << std::endl;
-// 	std::cout << thiIsBig.longestSpan() << std::endl;
-
-// 	return 0;
-// }
