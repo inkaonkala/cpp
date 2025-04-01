@@ -12,8 +12,6 @@ because templates are not compiled untill they are instantiated.
 
 std::stack
 
-	
-
-	queueue = first in first out FIFO, like book pile
+		queueue = first in first out FIFO, like book pile
 
 	stack = last in first out LIFO, like jono

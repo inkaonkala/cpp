@@ -41,7 +41,6 @@ DateAndPrices::DateAndPrices(const std::string data)
 
 DateAndPrices::~DateAndPrices() {}
 
-
 void DateAndPrices::prossInput(const std::string& inputFile) const
 {
 	std::ifstream file(inputFile);

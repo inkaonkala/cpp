@@ -10,6 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
+
 #include <iostream>
 #include "Span.hpp"
 
@@ -36,6 +37,34 @@ int main()
 	std::cout << sbul.shortestSpan() << std::endl;
 	std::cout << sbul.longestSpan() << std::endl;
 
-
 	return 0; 
 }
+
+/*
+	To test with A LOT of numbers we ant to use the forbidden library :O
+*/
+
+// #include <iostream>
+// #include <algorithm>
+// #include <cstdlib>
+// #include <ctime>
+
+// #include "Span.hpp"
+
+// int main()
+// {
+// 	Span thiIsBig = Span(10001);
+// 	std::vector<int> numbers(10001);
+
+// 	std::srand(std::time(nullptr));
+
+// 	std::generate(numbers.begin(), numbers.end(), []() {
+// 		return std::rand();
+// 	});
+
+// 	thiIsBig.addMultiple(numbers.begin(), numbers.end());
+// 	std::cout << thiIsBig.shortestSpan() << std::endl;
+// 	std::cout << thiIsBig.longestSpan() << std::endl;
+
+// 	return 0;
+// }

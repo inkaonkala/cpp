@@ -6,7 +6,7 @@ NAME = Spandex
 SRC = main.cpp Span.cpp
 OBJ = $(SRC:.cpp=.o)
 
-all: $(NAME)
+all : $(NAME)
 
 $(NAME): $(OBJ)
 	$(CXX) $(FLAGS) -o $(NAME) $(OBJ)
