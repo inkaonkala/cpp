@@ -38,7 +38,6 @@ class DateAndPrices
 		double getPrice(const std::string& date) const;
 		void prossInput(const std::string& inputFile) const;
 
-
 };
 
 
